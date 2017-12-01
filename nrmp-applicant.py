@@ -37,9 +37,10 @@ def matching(applicant):
 	'''Find the free program available to a applicant '''
 	print("Matching %s"%(applicant))
 
+	rankApplicant[applicant] = list(checkApplicant[applicant])
 
 	'''If Applicant not have program again, remove from free Applicant '''
-	if(len(checkApplicant[applicant])==0):
+	if(len(rankApplicant[applicant])==0):
 		freeApplicant.remove(applicant)
 		print('- Applicant %s not have program to check again '%(applicant))
 					
@@ -61,7 +62,7 @@ def matching(applicant):
 
 				if applicant not in rankProgram[program]:
 					print('- Applicant %s not exist in list applicant in program %s '%(applicant,program))
-					checkProgram[applicant].remove(program)
+					checkApplicant[applicant].remove(program)
 				else :
 					# get applicant who can remove, 
 					applicantRemove = applicant
@@ -70,11 +71,11 @@ def matching(applicant):
 							applicantRemove = applicantMatch
 
 					if applicantRemove==applicant:
-						print('- Rank Applicant %s in Program %s is bigger then other current students match '%(applicant,program))
+						print('- Rank Applicant %s in Program %s is bigger then other current applicant match '%(applicant,program))
 						checkApplicant[applicant].remove(program)
 					else:
 						print('- %s is better than %s'%(applicant, applicantRemove))
-						print('- Making %s free again.. and tentatively macth %s and %s'%(applicantRemove, applicant, program))
+						print('- Making %s free again.. and tentatively match %s and %s'%(applicantRemove, applicant, program))
 
 						#The new applicant have match 
 						freeApplicant.remove(applicant)
@@ -83,8 +84,6 @@ def matching(applicant):
 						#The old applicant is now not match anymore
 						freeApplicant.append(applicantRemove)
 						programMatchs[program].remove(applicantRemove)
-
-						rankApplicant[applicantRemove] = list(checkApplicant[applicantRemove])
 
 						break
 
