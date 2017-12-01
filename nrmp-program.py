@@ -79,6 +79,7 @@ def matching(program):
 						#The old program is now not match anymore
 						positionProgram[applicantMatchs[applicant]] += 1
 						checkProgram[applicantMatchs[applicant]].remove(applicant)
+						freeProgram.append(applicantMatchs[applicant])
 						
 						#The new applicant have match 
 						applicantMatchs[applicant]=program
