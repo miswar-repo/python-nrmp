@@ -31,7 +31,6 @@ positionProgram = {
 programMatchs 	= {}
 freeApplicant 	= []
 checkApplicant  =copy.deepcopy(rankApplicant)
- 
 
 def matching(applicant):
 	'''Find the free program available to a applicant '''
